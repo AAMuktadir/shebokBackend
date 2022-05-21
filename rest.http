@@ -1,0 +1,15 @@
+GET http://localhost:3001/admin/volunteer
+
+###
+POST http://localhost:3001/admin/addAdmin
+Content-Type: application/json
+
+{
+    "userName": "alihafiz", 
+    "name" : "Ali Mohammod Hafiz",
+    "password" : "alibhaiplanetx",
+    "role": "Editor"
+}
+
+###
+POST 

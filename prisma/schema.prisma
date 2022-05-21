@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  firstName     String
+  lastName String
+  password String
+  email String @unique
+  phoneNo String @unique
+  address String
+  date DateTime @default(now())
+  isVolunteer Boolean
+}
+
+model organization {
+  org_id Int @id @default(autoincrement())
+  orgName String @unique
+  contact String
+  ew String  //email or website
+  address String
+  added_by String  //admin name
+}
+
+model patientAddition{
+  paitient_id Int @id @default(autoincrement())
+  patient_name String
+  hospital String
+  location String
+  description String
+  time DateTime @default(now())
+  added_by String
+}
+
+model donation{
+  donationId Int @id @default(autoincrement())
+  type String
+  amount String
+  status Boolean
+  date DateTime @default(now())
+  expiration String
+  added_by String
+}
+
+
+model donationOrg{
+  donationId Int @id @default(autoincrement())
+  type String
+  amount Float
+  status Boolean
+  orgId Int
+  date DateTime @default(now())
+  donateBy String
+}
+
+model admin{
+  id Int @id @default(autoincrement())
+  userName String @unique
+  name String
+  role String
+  password String
+}
+
+
